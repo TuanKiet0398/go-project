@@ -37,7 +37,7 @@ func (app *application) addDefaultData(td *templateData, r *http.Request) *templ
 func  (app *application) renderTemplate(w http.ResponseWriter, r *http.Request, page string, td *templateData, partials ...string) error {
 	var t *template.Template
 	var err error
-	templateToRender := fmt.Sprintf("templates/%s.page.tmpl", page)
+	templateToRender := fmt.Sprintf("templates/%s.page.gohtml", page)
 
 	_, templateInMap := app.templateCache[templateToRender]
 
@@ -71,14 +71,14 @@ func (app *application) parseTemplate(partials []string, page, templateToRender 
 
 	if len(partials) > 0 {
 		for i, x := range partials {
-			partials[i] = fmt.Sprintf("templates/%s.partial.tmpl", x)
+			partials[i] = fmt.Sprintf("templates/%s.partial.gohtml", x)
 		}
 	}
 
-	files := append([]string{"templates/base.layout.tmpl"}, partials...)
+	files := append([]string{"templates/base.layout.gohtml"}, partials...)
 	files = append(files, templateToRender)
 
-	t, err = template.New(fmt.Sprintf("%s.page.tmpl", page)).Funcs(functions).ParseFS(templateFS, files...)
+	t, err = template.New(fmt.Sprintf("%s.page.gohtml", page)).Funcs(functions).ParseFS(templateFS, files...)
 	if err != nil {
 		app.errorLog.Println(err)
 		return nil, err

@@ -1,2 +1,3 @@
 go-webapp/go-stripe/web
 *.exe
+go-webapp/go-stripe/.air.toml
