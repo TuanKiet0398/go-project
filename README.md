@@ -15,9 +15,11 @@ A roadmap for learning Go, tracked through the projects in this repo.
 ## 2. Web App — `go-webapp/go-stripe/`
 - [x] `application` + `config` structs (dependency injection pattern)
 - [x] Custom `http.Server` with timeouts — `cmd/web/main.go`
-- [ ] Routing with `chi` — define routes in `cmd/web/routes.go`
+- [x] Routing with `chi` — define routes in `cmd/web/routes.go`
 - [ ] Middleware (logging, panic recovery, CORS)
 - [ ] HTML templates + template caching (`templateCache`)
+  - [x] Templates embedded (`//go:embed templates`) and parsed per request
+  - [ ] Actually populate `templateCache` so production reuses parsed templates
 - [ ] Serving static files (CSS/JS) from `web/`
 - [ ] Database connection (Postgres) — `internal` package
   - [ ] Models & repository pattern
